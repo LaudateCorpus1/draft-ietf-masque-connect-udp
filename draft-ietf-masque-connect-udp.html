@@ -1019,7 +1019,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Schinazi</td>
-<td class="center">Expires 4 September 2022</td>
+<td class="center">Expires 5 September 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1032,12 +1032,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-ietf-masque-connect-udp-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-03-03" class="published">3 March 2022</time>
+<time datetime="2022-03-04" class="published">4 March 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-09-04">4 September 2022</time></dd>
+<dd class="expires"><time datetime="2022-09-05">5 September 2022</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1083,7 +1083,7 @@ proxy UDP. It is built using HTTP Extended CONNECT.<a href="#section-abstract-1"
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 4 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 5 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1637,11 +1637,11 @@ to the target, see <span><a href="https://rfc-editor.org/rfc/rfc4443#section-3.2
 <span>[<a href="#ECN-TUNNEL" class="xref">ECN-TUNNEL</a>]</span> about transferring ECN marks between inner and outer IP
 headers does not apply. There is no inner IP header in UDP proxying tunnels.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <p id="section-6.2-2">Note that UDP proxying clients do not have the ability in this specification to
-control the ECN codepoints on UDP packets the proxy sends to the server, nor can
-proxies communicate the markings of each UDP packet from server to proxy.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+control the ECN codepoints on UDP packets the proxy sends to the target, nor can
+proxies communicate the markings of each UDP packet from target to proxy.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
 <p id="section-6.2-3">A UDP proxy <span class="bcp14">MUST</span> ignore ECN bits in the IP header of UDP packets received from
-the server, and <span class="bcp14">MUST</span> set the ECN bits to Not-ECT on UDP packets it sends to the
-server. These do not relate to the ECN markings of packets sent between client
+the target, and <span class="bcp14">MUST</span> set the ECN bits to Not-ECT on UDP packets it sends to the
+target. These do not relate to the ECN markings of packets sent between client
 and proxy in any way.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1653,7 +1653,7 @@ and proxy in any way.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
 <p id="section-7-1">There are significant risks in allowing arbitrary clients to establish a tunnel
-to arbitrary servers, as that could allow bad actors to send traffic and have
+to arbitrary targets, as that could allow bad actors to send traffic and have
 it attributed to the proxy. Proxies that support UDP proxying <span class="bcp14">SHOULD</span> restrict
 its use to authenticated users.<a href="#section-7-1" class="pilcrow">¶</a></p>
 <p id="section-7-2">Because the CONNECT method creates a TCP connection to the target, the target
