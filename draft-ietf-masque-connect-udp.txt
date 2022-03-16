@@ -4,8 +4,8 @@
 
 MASQUE                                                       D. Schinazi
 Internet-Draft                                                Google LLC
-Intended status: Standards Track                            4 March 2022
-Expires: 5 September 2022
+Intended status: Standards Track                           16 March 2022
+Expires: 17 September 2022
 
 
                      UDP Proxying Support for HTTP
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 September 2022.
+   This Internet-Draft will expire on 17 September 2022.
 
 Copyright Notice
 
@@ -123,15 +123,30 @@ Table of Contents
 2.  Configuration of Clients
 
    Clients are configured to use UDP Proxying over HTTP via an URI
-   Template [TEMPLATE].  The URI template MUST contain exactly two
-   variables: "target_host" and "target_port".  Examples are shown
-   below:
+   Template [TEMPLATE] with the variables "target_host" and
+   "target_port".  Examples are shown below:
 
    https://masque.example.org/{target_host}/{target_port}/
    https://proxy.example.org:4443/masque?h={target_host}&p={target_port}
    https://proxy.example.org:4443/masque{?target_host,target_port}
 
                       Figure 1: URI Template Examples
+
+   The URI template MUST be a level 3 template or lower.  The URI
+   template MUST be in absolute form, and MUST include non-empty scheme,
+   authority and path components.  The path component of the URI
+   template MUST start with a slash "/".  All template variables MUST be
+   within the path component of the URI.  The URI template MUST contain
+   the two variables "target_host" and "target_port" and MAY contain
+   other variables.  The URI template MUST NOT contain any non-ASCII
+   unicode characters and MUST only contain ASCII characters in the
+   range 0x21-0x7E inclusive (note that percent-encoding is allowed).
+   The URI template MUST NOT use Reserved Expansion ("+" operator),
+   Fragment Expansion ("#" operator), Label Expansion with Dot-Prefix,
+   Path Segment Expansion with Slash-Prefix, nor Path-Style Parameter
+   Expansion with Semicolon-Prefix.  If any of the requirements above
+   are not met by a URI template, the client MUST reject its
+   configuration and fail the request without sending it to the proxy.
 
    Since the original HTTP CONNECT method allowed conveying the target
    host and port but not the scheme, proxy authority, path, nor query,
@@ -557,9 +572,9 @@ Table of Contents
    [HTTP-DGRAM]
               Schinazi, D. and L. Pardue, "Using Datagrams with HTTP",
               Work in Progress, Internet-Draft, draft-ietf-masque-h3-
-              datagram-05, 25 October 2021,
+              datagram-06, 4 March 2022,
               <https://datatracker.ietf.org/doc/html/draft-ietf-masque-
-              h3-datagram-05>.
+              h3-datagram-06>.
 
    [QUIC]     Iyengar, J., Ed. and M. Thomson, Ed., "QUIC: A UDP-Based
               Multiplexed and Secure Transport", RFC 9000,
