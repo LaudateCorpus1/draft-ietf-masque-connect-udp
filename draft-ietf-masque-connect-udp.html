@@ -1172,6 +1172,9 @@ proxy UDP. It is built using HTTP Extended CONNECT.<a href="#section-abstract-1"
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-http-upgrade-token" class="xref">HTTP Upgrade Token</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-well-known-uri" class="xref">Well-Known URI</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
@@ -1252,7 +1255,7 @@ Examples are shown below:<a href="#section-2-1" class="pilcrow">¶</a></p>
 <figure id="figure-1">
         <div class="alignLeft art-text artwork" id="section-2-2.1">
 <pre>
-https://masque.example.org/{target_host}/{target_port}/
+https://masque.example.org/.well-known/masque/udp/{target_host}/{target_port}/
 https://proxy.example.org:4443/masque?h={target_host}&amp;p={target_port}
 https://proxy.example.org:4443/masque{?target_host,target_port}
 </pre>
@@ -1279,10 +1282,11 @@ port but not the scheme, proxy authority, path, nor query, there exist proxy
 configuration interfaces that only allow the user to configure the proxy host
 and the proxy port. Client implementations of this specification that are
 constrained by such limitations <span class="bcp14">MUST</span> use the default template which is defined
-as: "https://$PROXY_HOST:$PROXY_PORT/{target_host}/{target_port}/" where
-$PROXY_HOST and $PROXY_PORT are the configured host and port of the proxy
-respectively. Proxy deployments <span class="bcp14">SHOULD</span> use the default template to facilitate
-interoperability with such clients.<a href="#section-2-4" class="pilcrow">¶</a></p>
+as:
+"https://$PROXY_HOST:$PROXY_PORT/.well-known/masque/udp/{target_host}/{target_port}/"
+where $PROXY_HOST and $PROXY_PORT are the configured host and port of the
+proxy respectively. Proxy deployments <span class="bcp14">SHOULD</span> use the default template to
+facilitate interoperability with such clients.<a href="#section-2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="http-exchanges">
@@ -1367,14 +1371,15 @@ proxy.<a href="#section-3.2-2.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="section-3.2-3">For example, if the client is configured with URI template
-"https://proxy.example.org/{target_host}/{target_port}/" and wishes to open a
+"https://proxy.example.org/.well-known/masque/udp/{target_host}/{target_port}/"
+and wishes to open a
 UDP proxying tunnel to target 192.0.2.42:443, it could send the following
 request:<a href="#section-3.2-3" class="pilcrow">¶</a></p>
 <span id="name-example-http-request-over-h"></span><div id="fig-req-h1">
 <figure id="figure-2">
           <div class="alignLeft art-text artwork" id="section-3.2-4.1">
 <pre>
-GET https://proxy.example.org/192.0.2.42/443/ HTTP/1.1
+GET https://proxy.example.org/.well-known/masque/udp/192.0.2.42/443/ HTTP/1.1
 Host: proxy.example.org
 Connection: upgrade
 Upgrade: connect-udp
@@ -1456,7 +1461,7 @@ HEADERS
 :method = CONNECT
 :protocol = connect-udp
 :scheme = https
-:path = /192.0.2.42/443/
+:path = /.well-known/masque/udp/192.0.2.42/443/
 :authority = proxy.example.org
 </pre>
 </div>
@@ -1687,8 +1692,8 @@ ports so the TCP SYN-ACK does not offer much protection in real scenarios.<a hre
         <h3 id="name-http-upgrade-token">
 <a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-http-upgrade-token" class="section-name selfRef">HTTP Upgrade Token</a>
         </h3>
-<p id="section-8.1-1">This document will request IANA to register "connect-udp" in the
-HTTP Upgrade Token Registry maintained at
+<p id="section-8.1-1">This document will request IANA to register "connect-udp" in the HTTP Upgrade
+Token Registry maintained at
 &lt;<span><a href="https://www.iana.org/assignments/http-upgrade-tokens">https://www.iana.org/assignments/http-upgrade-tokens</a></span>&gt;.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-8.1-2">
           <dt id="section-8.1-2.1">Value:</dt>
@@ -1698,17 +1703,55 @@ HTTP Upgrade Token Registry maintained at
           <dd class="break"></dd>
 <dt id="section-8.1-2.3">Description:</dt>
           <dd style="margin-left: 1.5em" id="section-8.1-2.4">
-            <p id="section-8.1-2.4.1">Proxying of UDP Payloads.<a href="#section-8.1-2.4.1" class="pilcrow">¶</a></p>
+            <p id="section-8.1-2.4.1">Proxying of UDP Payloads<a href="#section-8.1-2.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-8.1-2.5">Expected Version Tokens:</dt>
           <dd style="margin-left: 1.5em" id="section-8.1-2.6">
-            <p id="section-8.1-2.6.1">None.<a href="#section-8.1-2.6.1" class="pilcrow">¶</a></p>
+            <p id="section-8.1-2.6.1">None<a href="#section-8.1-2.6.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-8.1-2.7">Reference:</dt>
           <dd style="margin-left: 1.5em" id="section-8.1-2.8">
-            <p id="section-8.1-2.8.1">This document.<a href="#section-8.1-2.8.1" class="pilcrow">¶</a></p>
+            <p id="section-8.1-2.8.1">This document<a href="#section-8.1-2.8.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="iana-uri">
+<section id="section-8.2">
+        <h3 id="name-well-known-uri">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-well-known-uri" class="section-name selfRef">Well-Known URI</a>
+        </h3>
+<p id="section-8.2-1">This document will request IANA to register "masque/udp" in the Well-Known URIs
+Registry maintained at
+&lt;<span><a href="https://www.iana.org/assignments/well-known-uris/well-known-uris.xhtml">https://www.iana.org/assignments/well-known-uris/well-known-uris.xhtml</a></span>&gt;.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-8.2-2">
+          <dt id="section-8.2-2.1">URI Suffix:</dt>
+          <dd style="margin-left: 1.5em" id="section-8.2-2.2">
+            <p id="section-8.2-2.2.1">masque/udp<a href="#section-8.2-2.2.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-8.2-2.3">Change Controller:</dt>
+          <dd style="margin-left: 1.5em" id="section-8.2-2.4">
+            <p id="section-8.2-2.4.1">IETF<a href="#section-8.2-2.4.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-8.2-2.5">Reference:</dt>
+          <dd style="margin-left: 1.5em" id="section-8.2-2.6">
+            <p id="section-8.2-2.6.1">This document<a href="#section-8.2-2.6.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-8.2-2.7">Status:</dt>
+          <dd style="margin-left: 1.5em" id="section-8.2-2.8">
+            <p id="section-8.2-2.8.1">permanent (if this document is approved)<a href="#section-8.2-2.8.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-8.2-2.9">Related Information:</dt>
+          <dd style="margin-left: 1.5em" id="section-8.2-2.10">
+            <p id="section-8.2-2.10.1">Includes all resources identified with the path prefix
+"/.well-known/masque/udp/"<a href="#section-8.2-2.10.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
