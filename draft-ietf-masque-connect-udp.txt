@@ -4,8 +4,8 @@
 
 MASQUE                                                       D. Schinazi
 Internet-Draft                                                Google LLC
-Intended status: Standards Track                           16 March 2022
-Expires: 17 September 2022
+Intended status: Standards Track                           21 March 2022
+Expires: 22 September 2022
 
 
                      UDP Proxying Support for HTTP
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 September 2022.
+   This Internet-Draft will expire on 22 September 2022.
 
 Copyright Notice
 
@@ -236,7 +236,7 @@ Table of Contents
    When using HTTP/1.1, a UDP proxying request will meet the following
    requirements:
 
-   *  the method SHALL be "CONNECT".
+   *  the method SHALL be "GET".
 
    *  the request-target SHALL use absolute-form (see Section 3.2.2 of
       [H1]).
@@ -255,7 +255,7 @@ Table of Contents
    to open a UDP proxying tunnel to target 192.0.2.42:443, it could send
    the following request:
 
-   CONNECT https://proxy.example.org/192.0.2.42/443/ HTTP/1.1
+   GET https://proxy.example.org/192.0.2.42/443/ HTTP/1.1
    Host: proxy.example.org
    Connection: upgrade
    Upgrade: connect-udp
