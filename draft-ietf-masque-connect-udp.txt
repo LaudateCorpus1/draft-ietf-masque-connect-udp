@@ -4,8 +4,8 @@
 
 MASQUE                                                       D. Schinazi
 Internet-Draft                                                Google LLC
-Intended status: Standards Track                            2 April 2022
-Expires: 4 October 2022
+Intended status: Standards Track                            4 April 2022
+Expires: 6 October 2022
 
 
                      UDP Proxying Support for HTTP
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 October 2022.
+   This Internet-Draft will expire on 6 October 2022.
 
 Copyright Notice
 
@@ -515,8 +515,8 @@ Upgrade: connect-udp
 
 8.1.  HTTP Upgrade Token
 
-   This document will request IANA to register "connect-udp" in the HTTP
-   Upgrade Token Registry maintained at
+   This document will request IANA to register "connect-udp" in the
+   "HTTP Upgrade Tokens" registry maintained at
    <https://www.iana.org/assignments/http-upgrade-tokens>.
 
    Value:  connect-udp
@@ -526,9 +526,9 @@ Upgrade: connect-udp
 
 8.2.  Well-Known URI
 
-   This document will request IANA to register "masque/udp" in the Well-
-   Known URIs Registry maintained at <https://www.iana.org/assignments/
-   well-known-uris/well-known-uris.xhtml>.
+   This document will request IANA to register "masque/udp" in the
+   "Well-Known URIs" registry maintained at
+   <https://www.iana.org/assignments/well-known-uris>.
 
    URI Suffix:  masque/udp
    Change Controller:  IETF
