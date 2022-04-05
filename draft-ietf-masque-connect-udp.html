@@ -1316,8 +1316,9 @@ expansion to determine the path and query of its request. target_host supports
 using DNS names, IPv6 literals and IPv4 literals. Note that this URI Template
 expansion requires using pct-encoding, so for example if the target_host is
 "2001:db8::42", it will be encoded in the URI as "2001%3Adb8%3A%3A42".<a href="#section-3-3" class="pilcrow">¶</a></p>
-<p id="section-3-4">A payload within a UDP proxying request message has no defined semantics; a UDP
-proxying request with a non-empty payload is malformed.<a href="#section-3-4" class="pilcrow">¶</a></p>
+<p id="section-3-4">By virtue of the definition of the Capsule Protocol (see <span>[<a href="#HTTP-DGRAM" class="xref">HTTP-DGRAM</a>]</span>), UDP
+proxying requests do not carry any message content. Similarly, successful
+UDP proxying responses also do not carry any message content.<a href="#section-3-4" class="pilcrow">¶</a></p>
 <p id="section-3-5">Responses to UDP proxying requests are not cacheable.<a href="#section-3-5" class="pilcrow">¶</a></p>
 <div id="proxy-handling">
 <section id="section-3.1">
