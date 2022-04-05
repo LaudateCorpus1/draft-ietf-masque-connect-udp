@@ -1445,8 +1445,10 @@ Upgrade: connect-udp
         <h3 id="name-http-request-over-http-2-an">
 <a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-http-request-over-http-2-an" class="section-name selfRef">HTTP Request over HTTP/2 and HTTP/3</a>
         </h3>
-<p id="section-3.4-1">When using HTTP/2 <span>[<a href="#H2" class="xref">HTTP/2</a>]</span> or HTTP/3 <span>[<a href="#H3" class="xref">HTTP/3</a>]</span>, UDP proxying requests use HTTP
-pseudo-header fields with the following requirements:<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.4-1">When using HTTP/2 <span>[<a href="#H2" class="xref">HTTP/2</a>]</span> or HTTP/3 <span>[<a href="#H3" class="xref">HTTP/3</a>]</span>, UDP proxying requests use Extended
+CONNECT. This requires that servers send an HTTP Setting as specified in
+<span>[<a href="#EXT-CONNECT2" class="xref">EXT-CONNECT2</a>]</span> and <span>[<a href="#EXT-CONNECT3" class="xref">EXT-CONNECT3</a>]</span>, and that requests use HTTP pseudo-header
+fields with the following requirements:<a href="#section-3.4-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3.4-2.1">The ":method" pseudo-header field <span class="bcp14">SHALL</span> be "CONNECT".<a href="#section-3.4-2.1" class="pilcrow">¶</a>
 </li>

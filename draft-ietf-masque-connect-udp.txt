@@ -303,7 +303,10 @@ Upgrade: connect-udp
 3.4.  HTTP Request over HTTP/2 and HTTP/3
 
    When using HTTP/2 [HTTP/2] or HTTP/3 [HTTP/3], UDP proxying requests
-   use HTTP pseudo-header fields with the following requirements:
+   use Extended CONNECT.  This requires that servers send an HTTP
+   Setting as specified in [EXT-CONNECT2] and [EXT-CONNECT3], and that
+   requests use HTTP pseudo-header fields with the following
+   requirements:
 
    *  The ":method" pseudo-header field SHALL be "CONNECT".
 
