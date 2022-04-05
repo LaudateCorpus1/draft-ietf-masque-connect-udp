@@ -1255,7 +1255,7 @@ entire connection.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
       <h2 id="name-configuration-of-clients">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-configuration-of-clients" class="section-name selfRef">Configuration of Clients</a>
       </h2>
-<p id="section-2-1">Clients are configured to use UDP Proxying over HTTP via an URI Template
+<p id="section-2-1">Clients are configured to use UDP Proxying over HTTP via a URI Template
 <span>[<a href="#TEMPLATE" class="xref">TEMPLATE</a>]</span> with the variables "target_host" and "target_port".
 Examples are shown below:<a href="#section-2-1" class="pilcrow">¶</a></p>
 <span id="name-uri-template-examples"></span><div id="fig-template-examples">
@@ -1271,18 +1271,18 @@ https://proxy.example.org:4443/masque{?target_host,target_port}
 <a href="#name-uri-template-examples" class="selfRef">URI Template Examples</a>
         </figcaption></figure>
 </div>
-<p id="section-2-3">The URI template <span class="bcp14">MUST</span> be a level 3 template or lower. The URI template <span class="bcp14">MUST</span> be
+<p id="section-2-3">The URI Template <span class="bcp14">MUST</span> be a level 3 template or lower. The URI Template <span class="bcp14">MUST</span> be
 in absolute form, and <span class="bcp14">MUST</span> include non-empty scheme, authority and path
-components. The path component of the URI template <span class="bcp14">MUST</span> start with a slash "/".
+components. The path component of the URI Template <span class="bcp14">MUST</span> start with a slash "/".
 All template variables <span class="bcp14">MUST</span> be within the path component of the URI. The URI
 template <span class="bcp14">MUST</span> contain the two variables "target_host" and "target_port" and <span class="bcp14">MAY</span>
-contain other variables. The URI template <span class="bcp14">MUST NOT</span> contain any non-ASCII unicode
+contain other variables. The URI Template <span class="bcp14">MUST NOT</span> contain any non-ASCII unicode
 characters and <span class="bcp14">MUST</span> only contain ASCII characters in the range 0x21-0x7E
-inclusive (note that percent-encoding is allowed). The URI template <span class="bcp14">MUST NOT</span> use
+inclusive (note that percent-encoding is allowed). The URI Template <span class="bcp14">MUST NOT</span> use
 Reserved Expansion ("+" operator), Fragment Expansion ("#" operator), Label
 Expansion with Dot-Prefix, Path Segment Expansion with Slash-Prefix, nor
 Path-Style Parameter Expansion with Semicolon-Prefix. If any of the requirements
-above are not met by a URI template, the client <span class="bcp14">MUST</span> reject its configuration
+above are not met by a URI Template, the client <span class="bcp14">MUST</span> reject its configuration
 and fail the request without sending it to the proxy.<a href="#section-2-3" class="pilcrow">¶</a></p>
 <p id="section-2-4">Since the original HTTP CONNECT method allowed conveying the target host and
 port but not the scheme, proxy authority, path, nor query, there exist proxy
@@ -1305,15 +1305,15 @@ facilitate interoperability with such clients.<a href="#section-2-4" class="pilc
 the Capsule Protocol as defined in <span>[<a href="#HTTP-DGRAM" class="xref">HTTP-DGRAM</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">A "connect-udp" request requests that the recipient proxy establish a tunnel
 over a single HTTP stream to the destination target identified by the
-"target_host" and "target_port" variables of the URI template (see
+"target_host" and "target_port" variables of the URI Template (see
 <a href="#client-config" class="xref">Section 2</a>). If the request is successful, the proxy commits to
 converting received HTTP Datagrams into UDP packets and vice versa until the
 tunnel is closed. Tunnels are commonly used to create an end-to-end virtual
 connection, which can then be secured using QUIC <span>[<a href="#QUIC" class="xref">QUIC</a>]</span> or another
 protocol running over UDP.<a href="#section-3-2" class="pilcrow">¶</a></p>
-<p id="section-3-3">When sending its UDP proxying request, the client <span class="bcp14">SHALL</span> perform URI template
+<p id="section-3-3">When sending its UDP proxying request, the client <span class="bcp14">SHALL</span> perform URI Template
 expansion to determine the path and query of its request. target_host supports
-using DNS names, IPv6 literals and IPv4 literals. Note that this URI template
+using DNS names, IPv6 literals and IPv4 literals. Note that this URI Template
 expansion requires using pct-encoding, so for example if the target_host is
 "2001:db8::42", it will be encoded in the URI as "2001%3Adb8%3A%3A42".<a href="#section-3-3" class="pilcrow">¶</a></p>
 <p id="section-3-4">A payload within a UDP proxying request message has no defined semantics; a UDP
@@ -1378,7 +1378,7 @@ proxy.<a href="#section-3.2-2.3" class="pilcrow">¶</a>
           <li class="normal" id="section-3.2-2.5">the request <span class="bcp14">SHALL</span> include a single "Upgrade" header with value "connect-udp".<a href="#section-3.2-2.5" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-3.2-3">For example, if the client is configured with URI template
+<p id="section-3.2-3">For example, if the client is configured with URI Template
 "https://proxy.example.org/.well-known/masque/udp/{target_host}/{target_port}/"
 and wishes to open a
 UDP proxying tunnel to target 192.0.2.42:443, it could send the following
@@ -1450,13 +1450,13 @@ pseudo-headers with the following requirements:<a href="#section-3.4-1" class="p
           <li class="normal" id="section-3.4-2.3">The ":authority" pseudo-header field <span class="bcp14">SHALL</span> contain the authority of the proxy.<a href="#section-3.4-2.3" class="pilcrow">¶</a>
 </li>
           <li class="normal" id="section-3.4-2.4">The ":path" and ":scheme" pseudo-header fields <span class="bcp14">SHALL NOT</span> be empty. Their
-values <span class="bcp14">SHALL</span> contain the scheme and path from the URI template after the URI
+values <span class="bcp14">SHALL</span> contain the scheme and path from the URI Template after the URI
 template expansion process has been completed.<a href="#section-3.4-2.4" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="section-3.4-3">A UDP proxying request that does not conform to these restrictions is
 malformed (see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-http2bis-07#section-8.1.1" class="relref">Section 8.1.1</a> of [<a href="#H2" class="xref">HTTP/2</a>]</span>).<a href="#section-3.4-3" class="pilcrow">¶</a></p>
-<p id="section-3.4-4">For example, if the client is configured with URI template
+<p id="section-3.4-4">For example, if the client is configured with URI Template
 "https://proxy.example.org/{target_host}/{target_port}/" and wishes to open a
 UDP proxying tunnel to target 192.0.2.42:443, it could send the following
 request:<a href="#section-3.4-4" class="pilcrow">¶</a></p>
