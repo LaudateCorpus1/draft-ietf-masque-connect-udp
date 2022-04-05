@@ -1222,10 +1222,11 @@ method (see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-http
 proxying TCP <span>[<a href="#TCP" class="xref">TCP</a>]</span> over HTTP, this document defines a new mechanism
 to proxy UDP <span>[<a href="#UDP" class="xref">UDP</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">UDP Proxying supports all versions of HTTP and uses HTTP Datagrams
-<span>[<a href="#HTTP-DGRAM" class="xref">HTTP-DGRAM</a>]</span>. When using HTTP/2 or HTTP/3, UDP
-proxying uses HTTP Extended CONNECT as described in <span>[<a href="#EXT-CONNECT2" class="xref">EXT-CONNECT2</a>]</span>
-and <span>[<a href="#EXT-CONNECT3" class="xref">EXT-CONNECT3</a>]</span>. When using HTTP/1.x, UDP
-proxying uses HTTP Upgrade as defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19#section-7.8" class="relref">Section 7.8</a> of [<a href="#HTTP" class="xref">HTTP</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<span>[<a href="#HTTP-DGRAM" class="xref">HTTP-DGRAM</a>]</span>. When using HTTP/2 <span>[<a href="#H2" class="xref">HTTP/2</a>]</span> or HTTP/3
+<span>[<a href="#H3" class="xref">HTTP/3</a>]</span>, UDP proxying uses HTTP Extended CONNECT as described in
+<span>[<a href="#EXT-CONNECT2" class="xref">EXT-CONNECT2</a>]</span> and <span>[<a href="#EXT-CONNECT3" class="xref">EXT-CONNECT3</a>]</span>.
+When using HTTP/1.x <span>[<a href="#H1" class="xref">HTTP/1.1</a>]</span>, UDP proxying uses HTTP Upgrade as defined in
+<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19#section-7.8" class="relref">Section 7.8</a> of [<a href="#HTTP" class="xref">HTTP</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <div id="conventions">
 <section id="section-1.1">
         <h3 id="name-conventions-and-definitions">
@@ -1359,7 +1360,8 @@ these requirements.<a href="#section-3.1-6" class="pilcrow">¶</a></p>
         <h3 id="name-http-request-over-http-11">
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-http-request-over-http-11" class="section-name selfRef">HTTP Request over HTTP/1.1</a>
         </h3>
-<p id="section-3.2-1">When using HTTP/1.1, a UDP proxying request will meet the following requirements:<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-1">When using HTTP/1.1 <span>[<a href="#H1" class="xref">HTTP/1.1</a>]</span>, a UDP proxying request will meet the following
+requirements:<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3.2-2.1">the method <span class="bcp14">SHALL</span> be "GET".<a href="#section-3.2-2.1" class="pilcrow">¶</a>
 </li>
@@ -1510,12 +1512,9 @@ header. When sent by the client, it contains a list of draft numbers supported
 by the client (e.g., "connect-udp-version: 0, 2"). When sent by the proxy, it
 contains a single draft number selected by the proxy from the list provided by
 the client (e.g., "connect-udp-version: 2"). Sending this header is <span class="bcp14">RECOMMENDED</span>
-but not required. Its ABNF is:<a href="#section-3.6-2" class="pilcrow">¶</a></p>
-<div id="section-3.6-3">
-<pre class="lang-abnf sourcecode">
-connect-udp-version = sf-list
-</pre><a href="#section-3.6-3" class="pilcrow">¶</a>
-</div>
+but not required. The "connect-udp-version" header field is a List Structured
+Field, see <span><a href="https://rfc-editor.org/rfc/rfc8941#section-3.1" class="relref">Section 3.1</a> of [<a href="#STRUCT-FIELD" class="xref">STRUCT-FIELD</a>]</span>. Each list member <span class="bcp14">MUST</span> be an
+Integer.<a href="#section-3.6-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1812,6 +1811,10 @@ URIs" registry maintained at
 <dt id="RFC8174">[RFC8174]</dt>
         <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="STRUCT-FIELD">[STRUCT-FIELD]</dt>
+        <dd>
+<span class="refAuthor">Nottingham, M.</span> and <span class="refAuthor">P-H. Kamp</span>, <span class="refTitle">"Structured Field Values for HTTP"</span>, <span class="seriesInfo">RFC 8941</span>, <span class="seriesInfo">DOI 10.17487/RFC8941</span>, <time datetime="2021-02" class="refDate">February 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8941">https://www.rfc-editor.org/rfc/rfc8941</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TCP">[TCP]</dt>
         <dd>

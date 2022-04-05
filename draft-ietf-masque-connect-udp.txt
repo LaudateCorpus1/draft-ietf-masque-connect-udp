@@ -100,10 +100,10 @@ Table of Contents
    [UDP].
 
    UDP Proxying supports all versions of HTTP and uses HTTP Datagrams
-   [HTTP-DGRAM].  When using HTTP/2 or HTTP/3, UDP proxying uses HTTP
-   Extended CONNECT as described in [EXT-CONNECT2] and [EXT-CONNECT3].
-   When using HTTP/1.x, UDP proxying uses HTTP Upgrade as defined in
-   Section 7.8 of [HTTP].
+   [HTTP-DGRAM].  When using HTTP/2 [HTTP/2] or HTTP/3 [HTTP/3], UDP
+   proxying uses HTTP Extended CONNECT as described in [EXT-CONNECT2]
+   and [EXT-CONNECT3].  When using HTTP/1.x [HTTP/1.1], UDP proxying
+   uses HTTP Upgrade as defined in Section 7.8 of [HTTP].
 
 1.1.  Conventions and Definitions
 
@@ -237,8 +237,8 @@ https://proxy.example.org:4443/masque{?target_host,target_port}
 
 3.2.  HTTP Request over HTTP/1.1
 
-   When using HTTP/1.1, a UDP proxying request will meet the following
-   requirements:
+   When using HTTP/1.1 [HTTP/1.1], a UDP proxying request will meet the
+   following requirements:
 
    *  the method SHALL be "GET".
 
@@ -355,9 +355,9 @@ Upgrade: connect-udp
    version: 0, 2").  When sent by the proxy, it contains a single draft
    number selected by the proxy from the list provided by the client
    (e.g., "connect-udp-version: 2").  Sending this header is RECOMMENDED
-   but not required.  Its ABNF is:
-
-   connect-udp-version = sf-list
+   but not required.  The "connect-udp-version" header field is a List
+   Structured Field, see Section 3.1 of [STRUCT-FIELD].  Each list
+   member MUST be an Integer.
 
 4.  Context Identifiers
 
@@ -601,6 +601,11 @@ Upgrade: connect-udp
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+   [STRUCT-FIELD]
+              Nottingham, M. and P-H. Kamp, "Structured Field Values for
+              HTTP", RFC 8941, DOI 10.17487/RFC8941, February 2021,
+              <https://www.rfc-editor.org/rfc/rfc8941>.
 
    [TCP]      Postel, J., "Transmission Control Protocol", STD 7,
               RFC 793, DOI 10.17487/RFC0793, September 1981,
