@@ -1271,20 +1271,33 @@ https://proxy.example.org:4443/masque{?target_host,target_port}
 <a href="#name-uri-template-examples" class="selfRef">URI Template Examples</a>
         </figcaption></figure>
 </div>
-<p id="section-2-3">The URI Template <span class="bcp14">MUST</span> be a level 3 template or lower. The URI Template <span class="bcp14">MUST</span> be
-in absolute form, and <span class="bcp14">MUST</span> include non-empty scheme, authority and path
-components. The path component of the URI Template <span class="bcp14">MUST</span> start with a slash "/".
-All template variables <span class="bcp14">MUST</span> be within the path component of the URI. The URI
-template <span class="bcp14">MUST</span> contain the two variables "target_host" and "target_port" and <span class="bcp14">MAY</span>
-contain other variables. The URI Template <span class="bcp14">MUST NOT</span> contain any non-ASCII unicode
-characters and <span class="bcp14">MUST</span> only contain ASCII characters in the range 0x21-0x7E
-inclusive (note that percent-encoding is allowed). The URI Template <span class="bcp14">MUST NOT</span> use
-Reserved Expansion ("+" operator), Fragment Expansion ("#" operator), Label
-Expansion with Dot-Prefix, Path Segment Expansion with Slash-Prefix, nor
-Path-Style Parameter Expansion with Semicolon-Prefix. If any of the requirements
-above are not met by a URI Template, the client <span class="bcp14">MUST</span> reject its configuration
-and fail the request without sending it to the proxy.<a href="#section-2-3" class="pilcrow">¶</a></p>
-<p id="section-2-4">Since the original HTTP CONNECT method allowed conveying the target host and
+<p id="section-2-3">The following requirements apply to the URI Template:<a href="#section-2-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2-4.1">The URI Template <span class="bcp14">MUST</span> be a level 3 template or lower.<a href="#section-2-4.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-2-4.2">The URI Template <span class="bcp14">MUST</span> be in absolute form, and <span class="bcp14">MUST</span> include non-empty scheme,
+authority and path components.<a href="#section-2-4.2" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-2-4.3">The path component of the URI Template <span class="bcp14">MUST</span> start with a slash "/".<a href="#section-2-4.3" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-2-4.4">All template variables <span class="bcp14">MUST</span> be within the path component of the URI.<a href="#section-2-4.4" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-2-4.5">The URI template <span class="bcp14">MUST</span> contain the two variables "target_host" and
+"target_port" and <span class="bcp14">MAY</span> contain other variables.<a href="#section-2-4.5" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-2-4.6">The URI Template <span class="bcp14">MUST NOT</span> contain any non-ASCII unicode characters and <span class="bcp14">MUST</span>
+only contain ASCII characters in the range 0x21-0x7E inclusive (note that
+percent-encoding is allowed).<a href="#section-2-4.6" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-2-4.7">The URI Template <span class="bcp14">MUST NOT</span> use Reserved Expansion ("+" operator), Fragment
+Expansion ("#" operator), Label Expansion with Dot-Prefix, Path Segment
+Expansion with Slash-Prefix, nor Path-Style Parameter Expansion with
+Semicolon-Prefix.<a href="#section-2-4.7" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-2-5">If any of the requirements above are not met by a URI Template, the client <span class="bcp14">MUST</span>
+reject its configuration and fail the request without sending it to the proxy.<a href="#section-2-5" class="pilcrow">¶</a></p>
+<p id="section-2-6">Since the original HTTP CONNECT method allowed conveying the target host and
 port but not the scheme, proxy authority, path, nor query, there exist proxy
 configuration interfaces that only allow the user to configure the proxy host
 and the proxy port. Client implementations of this specification that are
@@ -1293,7 +1306,7 @@ as:
 "https://$PROXY_HOST:$PROXY_PORT/.well-known/masque/udp/{target_host}/{target_port}/"
 where $PROXY_HOST and $PROXY_PORT are the configured host and port of the
 proxy respectively. Proxy deployments <span class="bcp14">SHOULD</span> use the default template to
-facilitate interoperability with such clients.<a href="#section-2-4" class="pilcrow">¶</a></p>
+facilitate interoperability with such clients.<a href="#section-2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="http-exchanges">
