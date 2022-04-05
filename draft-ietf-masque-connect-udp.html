@@ -1546,11 +1546,11 @@ as variable-length integers, see <span><a href="https://rfc-editor.org/rfc/rfc90
 non-zero even-numbered context IDs are client-allocated, and odd-numbered
 context IDs are proxy-allocated. The context ID namespace is tied to a given
 HTTP request: it is possible for a context ID with the same numeric value to be
-simultaneously assigned different semantics in distinct requests, potentially
-with different semantics. Context IDs <span class="bcp14">MUST NOT</span> be re-allocated within a given
-HTTP namespace but <span class="bcp14">MAY</span> be allocated in any order. Once allocated, any context ID
-can be used by both client and proxy - only allocation carries separate
-namespaces to avoid requiring synchronization.<a href="#section-4-2" class="pilcrow">¶</a></p>
+simultaneously allocated in distinct requests, potentially with different
+semantics. Context IDs <span class="bcp14">MUST NOT</span> be re-allocated within a given HTTP namespace
+but <span class="bcp14">MAY</span> be allocated in any order. Once allocated, any context ID can be used by
+both client and proxy - only allocation carries separate namespaces to avoid
+requiring synchronization.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <p id="section-4-3">Registration is the action by which an endpoint informs its peer of the
 semantics and format of a given context ID. This document does not define how
 registration occurs. Future extensions <span class="bcp14">MAY</span> use HTTP header fields or capsules to
