@@ -1375,7 +1375,7 @@ requirements:<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 the proxy.<a href="#section-3.2-2.3" class="pilcrow">¶</a>
 </li>
           <li class="normal" id="section-3.2-2.4">the request <span class="bcp14">SHALL</span> include a single "Connection" header field with value
-"Upgrade".<a href="#section-3.2-2.4" class="pilcrow">¶</a>
+"Upgrade" (note that this requirement is case-insensitive as per <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19#section-7.6.1" class="relref">Section 7.6.1</a> of [<a href="#HTTP" class="xref">HTTP</a>]</span>).<a href="#section-3.2-2.4" class="pilcrow">¶</a>
 </li>
           <li class="normal" id="section-3.2-2.5">the request <span class="bcp14">SHALL</span> include a single "Upgrade" header field with value
 "connect-udp".<a href="#section-3.2-2.5" class="pilcrow">¶</a>
@@ -1392,7 +1392,7 @@ request:<a href="#section-3.2-3" class="pilcrow">¶</a></p>
 <pre>
 GET https://proxy.example.org/.well-known/masque/udp/192.0.2.42/443/ HTTP/1.1
 Host: proxy.example.org
-Connection: upgrade
+Connection: Upgrade
 Upgrade: connect-udp
 </pre>
 </div>
@@ -1413,7 +1413,7 @@ requirements:<a href="#section-3.3-1" class="pilcrow">¶</a></p>
 <li class="normal" id="section-3.3-2.1">the HTTP status code on the response <span class="bcp14">SHALL</span> be 101 (Switching Protocols).<a href="#section-3.3-2.1" class="pilcrow">¶</a>
 </li>
           <li class="normal" id="section-3.3-2.2">the reponse <span class="bcp14">SHALL</span> include a single "Connection" header field with value
-"Upgrade".<a href="#section-3.3-2.2" class="pilcrow">¶</a>
+"Upgrade" (note that this requirement is case-insensitive as per <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19#section-7.6.1" class="relref">Section 7.6.1</a> of [<a href="#HTTP" class="xref">HTTP</a>]</span>).<a href="#section-3.3-2.2" class="pilcrow">¶</a>
 </li>
           <li class="normal" id="section-3.3-2.3">the response <span class="bcp14">SHALL</span> include a single "Upgrade" header field with value
 "connect-udp".<a href="#section-3.3-2.3" class="pilcrow">¶</a>
@@ -1430,7 +1430,7 @@ attempt as failed and abort the connection.<a href="#section-3.3-3" class="pilcr
           <div class="alignLeft art-text artwork" id="section-3.3-5.1">
 <pre>
 HTTP/1.1 101 Switching Protocols
-Connection: upgrade
+Connection: Upgrade
 Upgrade: connect-udp
 </pre>
 </div>
