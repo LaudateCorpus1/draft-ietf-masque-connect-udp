@@ -4,8 +4,8 @@
 
 MASQUE                                                       D. Schinazi
 Internet-Draft                                                Google LLC
-Intended status: Standards Track                            4 April 2022
-Expires: 6 October 2022
+Intended status: Standards Track                            5 April 2022
+Expires: 7 October 2022
 
 
                      UDP Proxying Support for HTTP
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 October 2022.
+   This Internet-Draft will expire on 7 October 2022.
 
 Copyright Notice
 
@@ -243,7 +243,7 @@ https://proxy.example.org:4443/masque{?target_host,target_port}
    *  the method SHALL be "GET".
 
    *  the request-target SHALL use absolute-form (see Section 3.2.2 of
-      [H1]).
+      [HTTP/1.1]).
 
    *  the request SHALL include a single Host header containing the
       origin of the proxy.
@@ -296,8 +296,8 @@ Upgrade: connect-udp
 
 3.4.  HTTP Request over HTTP/2 and HTTP/3
 
-   When using HTTP/2 [H2] or HTTP/3 [H3], UDP proxying requests use HTTP
-   pseudo-headers with the following requirements:
+   When using HTTP/2 [HTTP/2] or HTTP/3 [HTTP/3], UDP proxying requests
+   use HTTP pseudo-headers with the following requirements:
 
    *  The ":method" pseudo-header field SHALL be "CONNECT".
 
@@ -312,7 +312,7 @@ Upgrade: connect-udp
       completed.
 
    A UDP proxying request that does not conform to these restrictions is
-   malformed (see Section 8.1.1 of [H2]).
+   malformed (see Section 8.1.1 of [HTTP/2]).
 
    For example, if the client is configured with URI template
    "https://proxy.example.org/{target_host}/{target_port}/" and wishes
@@ -542,10 +542,9 @@ Upgrade: connect-udp
 9.1.  Normative References
 
    [DGRAM]    Pauly, T., Kinnear, E., and D. Schinazi, "An Unreliable
-              Datagram Extension to QUIC", Work in Progress, Internet-
-              Draft, draft-ietf-quic-datagram-10, 4 February 2022,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-quic-
-              datagram-10>.
+              Datagram Extension to QUIC", RFC 9221,
+              DOI 10.17487/RFC9221, March 2022,
+              <https://www.rfc-editor.org/rfc/rfc9221>.
 
    [EXT-CONNECT2]
               McManus, P., "Bootstrapping WebSockets with HTTP/2",
@@ -559,23 +558,6 @@ Upgrade: connect-udp
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
               h3-websockets-04>.
 
-   [H1]       Fielding, R. T., Nottingham, M., and J. Reschke,
-              "HTTP/1.1", Work in Progress, Internet-Draft, draft-ietf-
-              httpbis-messaging-19, 12 September 2021,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              messaging-19>.
-
-   [H2]       Thomson, M. and C. Benfield, "HTTP/2", Work in Progress,
-              Internet-Draft, draft-ietf-httpbis-http2bis-07, 24 January
-              2022, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              httpbis-http2bis-07>.
-
-   [H3]       Bishop, M., "Hypertext Transfer Protocol Version 3
-              (HTTP/3)", Work in Progress, Internet-Draft, draft-ietf-
-              quic-http-34, 2 February 2021,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-quic-
-              http-34>.
-
    [HTTP]     Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
               Semantics", Work in Progress, Internet-Draft, draft-ietf-
               httpbis-semantics-19, 12 September 2021,
@@ -588,6 +570,23 @@ Upgrade: connect-udp
               draft-ietf-masque-h3-datagram-08, 28 March 2022,
               <https://datatracker.ietf.org/doc/html/draft-ietf-masque-
               h3-datagram-08>.
+
+   [HTTP/1.1] Fielding, R. T., Nottingham, M., and J. Reschke,
+              "HTTP/1.1", Work in Progress, Internet-Draft, draft-ietf-
+              httpbis-messaging-19, 12 September 2021,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
+              messaging-19>.
+
+   [HTTP/2]   Thomson, M. and C. Benfield, "HTTP/2", Work in Progress,
+              Internet-Draft, draft-ietf-httpbis-http2bis-07, 24 January
+              2022, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              httpbis-http2bis-07>.
+
+   [HTTP/3]   Bishop, M., "Hypertext Transfer Protocol Version 3
+              (HTTP/3)", Work in Progress, Internet-Draft, draft-ietf-
+              quic-http-34, 2 February 2021,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-quic-
+              http-34>.
 
    [QUIC]     Iyengar, J., Ed. and M. Thomson, Ed., "QUIC: A UDP-Based
               Multiplexed and Secure Transport", RFC 9000,
